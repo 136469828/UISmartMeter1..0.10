@@ -1,0 +1,102 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+    #import "Tool.h"
+#endif
+
+
+typedef enum
+{
+    netTypeDefult,
+    netTypeMore
+    
+}NetType;
+
+
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136),[[UIScreen mainScreen] currentMode].size) : NO)
+
+#define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0)?YES:NO
+
+
+#define HEXCOLOR(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
+#define WEAKSELF typeof(self) __weak weakSelf = self;
+
+
+// 背景，淡蓝
+#define viewBackGroundColor     0xebf3fc
+
+#define DefaultColor_FFFFFF     0xFFFFFF
+#define DefaultColor_FFFFF0     0xFFFFF0
+#define DefaultColor_424242     0x424242
+#define DefaultColor_555555     0x555555
+// 灰色
+#define DefaultColor_222222     0x222222
+#define DefaultColor_DAD9D9     0xDAD9D9
+#define DefaultColor_CDCDCD     0xCDCDCD
+#define DefaultColor_333333     0x333333
+#define DefaultColor_666666     0x666666
+#define DefaultColor_999999     0x999999
+#define DefaultColor_F3F3F3     0xF3F3F3
+#define DefaultColor_D1D1D1     0xD1D1D1
+// 蓝色
+#define DefaultColor_2069c0     0x2069c0
+#define DefaultColor_428CCC     0x428CCC
+#define DefaultColor_4E9FE3     0x4E9FE3
+#define DefaultColor_52A2CF     0x52A2CF
+#define DefaultColor_3A77B7     0x3A77B7
+#define DefaultColor_1897DB     0x1897DB
+#define DefaultColor_1aa9b9      0x1aa9b9
+// 橙色
+#define DefaultColor_ED6C00     0xED6C00
+#define DefaultColor_F08300     0xF08300
+#define DefaultColor_ea9817     0xea9817
+#define DefaultColor_F99C37     0xF99C37
+// 绿色
+#define DefaultColor_008E00     0x008E00
+// 红色
+#define DefaultColor_B60005     0xB60005
+#define DefaultColor_FF0000     0xFF0000
+#define DefaultColor_e60012     0xe60012
+#define DefaultColor_fc3f4f     0xfc3f4f
+
+
+
+
+#define ERROR_INFO(ErrorDomain,ErrorCode,ErroeDescript) [[NSError alloc] initWithDomain:[NSString stringWithFormat:ErrorDomain] code:ErrorCode userInfo:[NSDictionary dictionaryWithObject:ErroeDescript forKey:NSLocalizedDescriptionKey]];
+
+
+#define ERROR_NOINFO(ErrorDomain,ErrorCode) [[NSError alloc] initWithDomain:[NSString stringWithFormat:ErrorDomain] code:ErrorCode userInfo:nil];
+
+
+#define ERROR_DICTINFO(ErrorDomain,ErrorCode,ErroeDictionary) [[NSError alloc] initWithDomain:[NSString stringWithFormat:ErrorDomain] code:ErrorCode userInfo:ErroeDictionary];
+
+#define CLog(format, ...)
+
+#ifdef DEBUG_MODE
+
+#define DEBUG_NSLOG(format, ...) NSLog(format, ## __VA_ARGS__)
+#define MCRelease(x) [x release]
+
+#else
+
+#define DEBUG_NSLOG(format, ...)
+#define MCRelease(x) [x release], x = nil
+
+#endif
