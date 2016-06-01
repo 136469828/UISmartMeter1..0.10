@@ -5,7 +5,6 @@
 //
 //  Created by RealTmac on 15-1-5.
 //  Copyright (c) 2015年 RealTmac. All rights reserved.
-// 测试
 
 #import "NSData-Base64.h"
 

@@ -537,7 +537,7 @@
 
 -(void)webServicDidFinishedWithRequest:(NetWebServiceRequest *)request requetString:(NSString *)requestStr
 {
-    
+
     if(request.tag == 101) // 获取设备
     {
         id obj = [DataPaser returnObjectWithString:requestStr withType:jsonDataTypeMyDeviceList];
